@@ -2936,4 +2936,55 @@ http://hallojs.org
     });
   })(jQuery);
 
+  /* from github.com/troyth connects to jquery.fileupload-gsapp.js
+  */
+  (function($) {
+    return jQuery.widget("Liip.hallofile", {
+      options: {
+        editable: null,
+        toolbar: null,
+        uuid: "",
+        loaded: null,
+        upload: null,
+        uploadUrl: null,
+        buttonCssClass: null,
+        entity: null,
+        vie: null,
+      },
+      populateToolbar: function(toolbar) {
+        var buttonHolder, buttonset, id, widget;
+        this.options.toolbar = toolbar;
+        widget = this;
+        buttonset = jQuery("<span class=\"" + widget.widgetName + "\"></span>");
+        id = "" + this.options.uuid + "-file";
+        buttonHolder = jQuery('<span></span>');
+
+        buttonHolder.hallobutton({
+          label: 'Files',
+          icon: 'icon-file',
+          editable: this.options.editable,
+          command: null,
+          queryState: false,
+          uuid: this.options.uuid,
+          cssClass: this.options.buttonCssClass
+        });
+
+        buttonset.append(buttonHolder);
+        this.button = buttonHolder;
+        this.button.on("click", function(event) {
+          init_fileuploader();
+          $('#fileupload-modal').modal('show');
+          return false;
+        });
+
+        this.options.editable.element.on("hallodeactivated", function(event) {
+          //$('#fileupload-modal').modal('hide');
+          return true;
+        });
+
+        return toolbar.append(buttonset);;
+      }
+    });
+  })(jQuery);
+
 }).call(this);
