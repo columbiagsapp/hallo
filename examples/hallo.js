@@ -2972,7 +2972,7 @@ http://hallojs.org
         buttonset.append(buttonHolder);
         this.button = buttonHolder;
         this.button.on("click", function(event) {
-          init_fileuploader();
+          init_fileuploader('resource');
           $('#fileupload-modal').modal('show');
           return false;
         });
