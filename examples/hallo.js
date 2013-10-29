@@ -1428,6 +1428,7 @@ http://hallojs.org
           return widget.options.uploadCallback({
             widget: widget,
             success: function(url) {
+              console.log('success url: '+ url);
               return widget.options.imageWidget.setCurrent({
                 url: url,
                 label: ''
@@ -1437,6 +1438,8 @@ http://hallojs.org
         });
       },
       _prepareIframe: function(widget) {
+        console.log('_prepareIframe');
+
         var iframe, iframeName;
         iframeName = "" + widget.widgetName + "_postframe_" + widget.options.uuid;
         iframeName = iframeName.replace(/-/g, '_');
